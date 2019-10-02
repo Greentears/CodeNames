@@ -18,8 +18,19 @@ public:
     void inline setColor(Color color);
     void inline resetPoints();
     Color inline getColor();
+    std::vector<Player> inline getPlayers();
     void inline setNbGuessWord(int nb);
+    int inline getNbGuessWord();
+    int inline nbPlayers();
 };
+
+int inline Team::nbPlayers() {
+    return players.size();
+}
+
+std::vector<Player> inline Team::getPlayers() {
+    return players;
+}
 
 void Team::setColor(Color color) {
     this->color = color;
@@ -35,6 +46,10 @@ Color Team::getColor() {
 
 void Team::setNbGuessWord(int nb) {
     this->nbGuessWord = nb;
+}
+
+int inline Team::getNbGuessWord() {
+    return this->nbGuessWord;
 }
 
 #endif // TEAM_H

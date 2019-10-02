@@ -1,12 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <vector>
 #include "team.h"
+#include "card.h"
 #include <string>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <vector>
 
 class Game
 {
@@ -14,17 +15,20 @@ private:
     static const int NB_GUESS_WORD = 8;
     std::vector<Team> teams;
     void inline setTeamsColor();
-    void inline setStartingTeam();
     Team currentTeam;
     bool isOverVal;
     int inline rand01();
+    int inline randNb(int max);
 public:
     Game(std::vector<Team> teams);
     void announceTheme(std::string theme, int nbWords);
     void guessWord(std::string word);
     void endTurn();
     bool isOver();
+    void setStartingTeam();
+    void setSpy();
     Team inline getCurrentTeam();
+    std::vector<Card> getCards();
 };
 
 void inline Game::setTeamsColor() {
@@ -37,11 +41,13 @@ int inline Game::rand01() {
     return (int) rand() % 2;
 }
 
-void inline Game::setStartingTeam() {
-    int randValue = rand01();
-    this->currentTeam = this->teams[randValue];
-    this->currentTeam.setNbGuessWord(NB_GUESS_WORD + 1); // the team starting has to guess one more word
-    this->teams[(randValue + 1) % 2].setNbGuessWord(NB_GUESS_WORD);
+int inline Game::randNb(int max) {
+    srand(time(NULL));
+    return (int) rand() % max;
+}
+
+Team inline Game::getCurrentTeam() {
+    return this->currentTeam;
 }
 
 #endif // GAME_H

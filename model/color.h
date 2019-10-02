@@ -1,4 +1,4 @@
-#ifndef COLOS_H
+#ifndef COLOR_H
 #define COLOR_H
 
 enum Color {

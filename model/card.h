@@ -4,13 +4,13 @@
 #include "color.h"
 #include "word.h"
 
-class card
+class Card
 {
 private:
     Word word;
     Color color = Color::UNDEFINED;
 public:
-    card();
+    Card();
 };
 
 #endif // CARD_H

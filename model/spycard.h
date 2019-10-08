@@ -8,7 +8,8 @@
 class SpyCard
 {
 private:
-    Color spyCard[][];
+    static const int SIZE = 5;
+    Color spyCard[SIZE][SIZE];
     std::vector<Team> teams;
 public:
     SpyCard(std::vector<Team> teams);

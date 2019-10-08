@@ -25,11 +25,11 @@ public:
 };
 
 int inline Team::nbPlayers() {
-    return players.size();
+    return this->players.size();
 }
 
 std::vector<Player> inline Team::getPlayers() {
-    return players;
+    return this->players;
 }
 
 void Team::setColor(Color color) {
@@ -37,7 +37,7 @@ void Team::setColor(Color color) {
 }
 
 void Team::resetPoints() {
-    points = 0;
+    this->points = 0;
 }
 
 Color Team::getColor() {

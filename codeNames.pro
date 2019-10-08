@@ -8,7 +8,8 @@ SOURCES += main.cpp \
     model/player.cpp \
     model/team.cpp \
     model/game.cpp \
-    model/spycard.cpp
+    model/spycard.cpp \
+    view/view.cpp
 
 HEADERS += \
     model/color.h \
@@ -18,4 +19,5 @@ HEADERS += \
     model/team.h \
     model/role.h \
     model/game.h \
-    model/spycard.h
+    model/spycard.h \
+    view/view.h

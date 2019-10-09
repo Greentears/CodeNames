@@ -6,10 +6,10 @@
 class View
 {
 private:
-    Game game_;
+    Game game;
 public:
     View();
-    View(Game game);
+    View(Game& game);
     void displayWords();
     void displaySpyCard();
 };

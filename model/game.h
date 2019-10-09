@@ -8,21 +8,22 @@
 #include <stdbool.h>
 #include <time.h>
 #include <vector>
+#include <random>
 
 class Game
 {
 private:
-    static const int NB_GUESS_WORD = 8;
+    static constexpr int NB_GUESS_WORD = 8;
     std::vector<Team> teams;
     void inline setTeamsColor();
-    Team currentTeam;
+    Team* currentTeam;
     bool isOverVal;
-    int inline rand01();
-    int inline randNb(int max);
+    int inline randNb(int min, int max);
 public:
+    Game();
     Game(std::vector<Team> teams);
-    void announceTheme(std::string theme, int nbWords);
-    void guessWord(std::string word);
+    void announceTheme(const std::string& theme, int nbWords);
+    void guessWord(const std::string& word);
     void endTurn();
     bool isOver();
     void setStartingTeam();
@@ -32,22 +33,19 @@ public:
 };
 
 void inline Game::setTeamsColor() {
-    Color firstColor = rand01() == 0 ? Color::BLUE : Color::RED;
+    Color firstColor = randNb(0,1) == 0 ? Color::BLUE : Color::RED;
     this->teams[0].setColor(firstColor);
     this->teams[1].setColor(firstColor == Color::BLUE ? Color::RED : Color::BLUE);
 }
-int inline Game::rand01() {
-    srand(time(NULL));
-    return (int) rand() % 2;
-}
-
-int inline Game::randNb(int max) {
-    srand(time(NULL));
-    return (int) rand() % max;
+int inline Game::randNb(int min, int max) {
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(min, max);
+    int dice_roll = distribution(generator);
+    return dice_roll;
 }
 
 Team inline Game::getCurrentTeam() {
-    return this->currentTeam;
+    return *this->currentTeam;
 }
 
 #endif // GAME_H

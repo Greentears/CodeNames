@@ -18,7 +18,7 @@ public:
     void inline setColor(Color color);
     void inline resetPoints();
     Color inline getColor();
-    std::vector<Player> inline getPlayers();
+    const inline std::vector<Player>& getPlayers();
     void inline setNbGuessWord(int nb);
     int inline getNbGuessWord();
     int inline nbPlayers();
@@ -28,7 +28,7 @@ int inline Team::nbPlayers() {
     return this->players.size();
 }
 
-std::vector<Player> inline Team::getPlayers() {
+const inline std::vector<Player>& Team::getPlayers() {
     return this->players;
 }
 

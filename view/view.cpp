@@ -4,3 +4,7 @@ View::View()
 {
 
 }
+
+View::View(Game& game) {
+
+}
